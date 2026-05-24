@@ -21,6 +21,23 @@ To install this theme, simply use the `omarchy-theme-install` command:
 omarchy-theme-install https://github.com/bjarneo/omarchy-snow-theme
 ```
 
+## Known issues
+
+### Lazydocker selection bar not visible
+
+Lazydocker uses ANSI blue as its selection background color. Since this theme maps all ANSI colors to near-black (`#0a0a0a`), the selected row appears as a black bar with invisible text.
+
+To fix, add this to `~/.config/lazydocker/config.yml`:
+
+```yaml
+gui:
+  theme:
+    selectedLineBgColor:
+      - reverse
+```
+
+This uses reverse video instead of ANSI blue, making the selection visible regardless of the terminal palette. A more permanent fix would be an `omarchy-theme-set-lazydocker` script upstream in Omarchy, similar to the existing `omarchy-theme-set-obsidian` and `omarchy-theme-set-vscode` scripts.
+
 ## Neovim theme
 [https://github.com/bjarneo/snow.nvim](https://github.com/bjarneo/snow.nvim)
 
